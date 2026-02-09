@@ -10,7 +10,7 @@ class DioClient {
   );
 
   DioClient() {
-    // لازم اسم constructor صح
+  
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
@@ -18,10 +18,10 @@ class DioClient {
           if (token != null && token.isNotEmpty) {
             options.headers["Authorization"] = "Bearer $token";
           }
-          handler.next(options); // مهم جدًا يكمل request حتى لو مفيش token
+          handler.next(options); 
         },
         onError: (DioError e, handler) {
-          handler.next(e); // Pass error
+          handler.next(e); 
         },
       ),
     );
